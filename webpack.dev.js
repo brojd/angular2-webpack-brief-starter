@@ -3,15 +3,14 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpack = require('html-webpack-plugin');
-const ChunkWebpack = webpack.optimize.CommonsChunkPlugin;
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const rootDir = path.resolve(__dirname);
 
 module.exports = {
   
   entry: {
-    app: [path.resolve(rootDir, 'src', 'boot')],
-    vendor: [path.resolve(rootDir, 'src', 'vendor')]
+    'js/boot': [path.resolve(rootDir, 'src', 'boot')],
+    'js/vendor': [path.resolve(rootDir, 'src', 'vendor')]
   },
   
   output: {
@@ -29,6 +28,10 @@ module.exports = {
       {
         test: /\.(pcss|css)$/,
         loader: ExtractTextPlugin.extract(['css-loader', 'postcss-loader'])
+      },
+      {
+        test: /\.(jpg|jpeg|png|gif)$/,
+        loader: 'file-loader?name=media/[name].[ext]',
       },
       {
         test: /\.html$/,
@@ -52,17 +55,12 @@ module.exports = {
   devtool: 'cheap-module-source-map',
   
   plugins: [
-    new ChunkWebpack({
-      filename: 'vendor.bundle.js',
-      minChunks: Infinity,
-      name: 'vendor'
-    }),
     new HtmlWebpack({
       filename: 'index.html',
       inject: 'body',
       template: path.resolve(rootDir, 'src', 'index.html')
     }),
-    new ExtractTextPlugin("styles.css")
+    new ExtractTextPlugin("css/styles.css")
   ],
   
   resolve: {
