@@ -4,7 +4,8 @@ const HtmlWebpack = require('html-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
 const ChunkWebpack = webpack.optimize.CommonsChunkPlugin;
-const rootDir = path.resolve(__dirname, '..');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const rootDir = path.resolve(__dirname);
 
 module.exports = {
   
@@ -20,7 +21,15 @@ module.exports = {
   
   module: {
     loaders: [
-      { test: /\.ts$/, loader: 'awesome-typescript-loader', exclude: /node_modules/ }
+      {
+        test: /\.ts$/,
+        loader: 'awesome-typescript-loader',
+        exclude: /node_modules/
+      },
+      {
+        test: /\.(pcss|css)$/,
+        loader: ExtractTextPlugin.extract(['css-loader', 'postcss-loader'])
+      }
     ]
   },
   
@@ -44,7 +53,8 @@ module.exports = {
       filename: 'index.html',
       inject: 'body',
       template: path.resolve(rootDir, 'src', 'index.html')
-    })
+    }),
+    new ExtractTextPlugin("styles.css")
   ],
   
   resolve: {

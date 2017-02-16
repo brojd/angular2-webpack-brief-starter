@@ -1,2 +1,2 @@
-let a: string = '1';
-alert("noww");
+import './index.pcss';
+import './app/app.pcss';
