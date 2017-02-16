@@ -1,8 +1,8 @@
 'use strict';
 
-const HtmlWebpack = require('html-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
+const HtmlWebpack = require('html-webpack-plugin');
 const ChunkWebpack = webpack.optimize.CommonsChunkPlugin;
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const rootDir = path.resolve(__dirname);
@@ -29,6 +29,14 @@ module.exports = {
       {
         test: /\.(pcss|css)$/,
         loader: ExtractTextPlugin.extract(['css-loader', 'postcss-loader'])
+      },
+      {
+        test: /\.html$/,
+        loader: 'raw-loader'
+      },
+      {
+        test: /\.json$/,
+        loader: 'json-loader'
       }
     ]
   },
@@ -41,7 +49,7 @@ module.exports = {
   },
   
   debug: true,
-  devtool: 'source-map',
+  devtool: 'cheap-module-source-map',
   
   plugins: [
     new ChunkWebpack({
