@@ -9,12 +9,12 @@ const rootDir = path.resolve(__dirname);
 module.exports = {
   
   entry: {
-    'js/boot': [path.resolve(rootDir, 'src', 'boot')],
-    'js/vendor': [path.resolve(rootDir, 'src', 'vendor')]
+    boot: [path.resolve(rootDir, 'src', 'boot')],
+    vendor: [path.resolve(rootDir, 'src', 'vendor')]
   },
   
   output: {
-    filename: '[name].bundle.js',
+    filename: 'js/[name].bundle.js',
     path: path.resolve(rootDir, 'build')
   },
   
@@ -27,23 +27,23 @@ module.exports = {
       },
       {
         test: /\.(pcss|css)$/,
-        loader: ExtractTextPlugin.extract(['css-loader', 'postcss-loader']),
-        exclude: /node_modules/
+        loader: ExtractTextPlugin.extract(['css-loader', 'postcss-loader'])
       },
       {
         test: /\.(jpg|jpeg|png|gif)$/,
         loader: 'file-loader?name=media/[name].[ext]',
-        exclude: /node_modules/
+      },
+      {
+        test: /\.woff($|\?)|\.woff2($|\?)|\.ttf($|\?)|\.eot($|\?)|\.svg($|\?)/,
+        loader: 'url-loader'
       },
       {
         test: /\.html$/,
-        loader: 'raw-loader',
-        exclude: /node_modules/
+        loader: 'raw-loader'
       },
       {
         test: /\.json$/,
-        loader: 'json-loader',
-        exclude: /node_modules/
+        loader: 'json-loader'
       }
     ]
   },
@@ -56,7 +56,7 @@ module.exports = {
       inject: 'body',
       template: path.resolve(rootDir, 'src', 'index.html')
     }),
-    new ExtractTextPlugin("css/styles.css"),
+    new ExtractTextPlugin("css/[name].bundle.css"),
     new webpack.LoaderOptionsPlugin({
       minimize: true,
       debug: false
@@ -73,7 +73,7 @@ module.exports = {
       comments: false
     }),
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'js/vendor',
+      name: 'vendor',
       minChunks: Infinity
     })
   ],

@@ -9,12 +9,12 @@ const rootDir = path.resolve(__dirname);
 module.exports = {
   
   entry: {
-    'js/boot': [path.resolve(rootDir, 'src', 'boot')],
-    'js/vendor': [path.resolve(rootDir, 'src', 'vendor')]
+    boot: [path.resolve(rootDir, 'src', 'boot')],
+    vendor: [path.resolve(rootDir, 'src', 'vendor')]
   },
   
   output: {
-    filename: '[name].bundle.js',
+    filename: 'js/[name].bundle.js',
     path: path.resolve(rootDir, 'build')
   },
   
@@ -32,6 +32,10 @@ module.exports = {
       {
         test: /\.(jpg|jpeg|png|gif)$/,
         loader: 'file-loader?name=media/[name].[ext]',
+      },
+      {
+        test: /\.woff($|\?)|\.woff2($|\?)|\.ttf($|\?)|\.eot($|\?)|\.svg($|\?)/,
+        loader: 'url-loader'
       },
       {
         test: /\.html$/,
@@ -60,7 +64,7 @@ module.exports = {
       inject: 'body',
       template: path.resolve(rootDir, 'src', 'index.html')
     }),
-    new ExtractTextPlugin("css/styles.css")
+    new ExtractTextPlugin("css/[name].bundle.css")
   ],
   
   resolve: {
