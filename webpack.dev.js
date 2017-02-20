@@ -22,7 +22,7 @@ module.exports = {
     loaders: [
       {
         test: /\.ts$/,
-        loader: 'awesome-typescript-loader',
+        loaders: ['awesome-typescript-loader', 'angular2-template-loader'],
         exclude: /node_modules/
       },
       {
@@ -39,7 +39,7 @@ module.exports = {
       },
       {
         test: /\.html$/,
-        loader: 'raw-loader'
+        loader: 'raw'
       },
       {
         test: /\.json$/,
