@@ -1,6 +1,6 @@
 module.exports = {
   plugins: [
-    require('postcss-cssnext'),
-    require('css-mqpacker')
+    require('css-mqpacker'),
+    require('postcss-cssnext')
   ]
 };

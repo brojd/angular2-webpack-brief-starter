@@ -27,6 +27,12 @@ module.exports = {
       },
       {
         test: /\.(pcss|css)$/,
+        exclude: [path.resolve(rootDir, 'src', 'app', 'global_styles')],
+        loader: ExtractTextPlugin.extract(['to-string-loader', 'css-loader', 'postcss-loader'])
+      },
+      {
+        test: /\.(pcss|css)$/,
+        include: [path.resolve(rootDir, 'src', 'app', 'global_styles')],
         loader: ExtractTextPlugin.extract(['css-loader', 'postcss-loader'])
       },
       {
@@ -64,7 +70,11 @@ module.exports = {
       inject: 'body',
       template: path.resolve(rootDir, 'src', 'index.html')
     }),
-    new ExtractTextPlugin("css/[name].bundle.css")
+    new ExtractTextPlugin("css/[name].bundle.css"),
+    new webpack.ContextReplacementPlugin(
+      /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+      __dirname
+    )
   ],
   
   resolve: {
@@ -72,3 +82,7 @@ module.exports = {
   }
   
 };
+
+if (module.hot) {
+  module.hot.accept();
+}
