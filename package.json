@@ -1,7 +1,7 @@
 {
   "name": "angular2-webpack-brief-starter",
   "version": "0.0.1",
-  "description": "Simple, minimalistic, straightforward and universal starter for any modern JS project",
+  "description": "Simple, straightforward, well-structured boilerplate for any modern Angular 2 project",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --config ./webpack.dev.js --hot --inline",
@@ -12,13 +12,13 @@
     "url": "git+https://github.com/dominik791/webpack-typescript-postcss-universal-starter.git"
   },
   "keywords": [
+    "angular2",
+    "angular",
+    "boilerplate",
     "typescript",
     "webpack",
     "postcss",
-    "starter",
-    "universal",
-    "simple",
-    "modern"
+    "starter"
   ],
   "author": "",
   "license": "MIT",

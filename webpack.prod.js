@@ -22,11 +22,17 @@ module.exports = {
     loaders: [
       {
         test: /\.ts$/,
-        loader: 'awesome-typescript-loader',
+        loaders: ['awesome-typescript-loader', 'angular2-template-loader'],
         exclude: /node_modules/
       },
       {
         test: /\.(pcss|css)$/,
+        exclude: [path.resolve(rootDir, 'src', 'app', 'global_styles')],
+        loader: ExtractTextPlugin.extract(['to-string-loader', 'css-loader', 'postcss-loader'])
+      },
+      {
+        test: /\.(pcss|css)$/,
+        include: [path.resolve(rootDir, 'src', 'app', 'global_styles')],
         loader: ExtractTextPlugin.extract(['css-loader', 'postcss-loader'])
       },
       {
@@ -39,7 +45,7 @@ module.exports = {
       },
       {
         test: /\.html$/,
-        loader: 'raw-loader'
+        loader: 'raw'
       },
       {
         test: /\.json$/,
