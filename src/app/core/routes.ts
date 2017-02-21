@@ -4,7 +4,7 @@ import { YourIPComponent } from '../feature_modules/yourIP/components/yourIP/you
 export const routes: {}[] = [
   {
     path: '',
-    redirectTo: '/timer',
+    redirectTo: 'timer',
     pathMatch: 'full'
   },
   {

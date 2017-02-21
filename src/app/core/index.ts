@@ -14,7 +14,7 @@ import { AppComponent }  from './components/app/app.component';
 
 
 @NgModule({
-  imports:      [ BrowserModule, RouterModule.forRoot(routes), ClockModule, YourIPModule ],
+  imports:      [ BrowserModule, RouterModule.forRoot(routes, { useHash: true }), ClockModule, YourIPModule ],
   declarations: [ AppComponent ],
   bootstrap:    [ AppComponent ]
 })
