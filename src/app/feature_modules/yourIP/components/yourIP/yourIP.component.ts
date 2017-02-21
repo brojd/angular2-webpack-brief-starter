@@ -8,10 +8,15 @@ import { YourIPService } from '../../services/yourIP.service';
 })
 export class YourIPComponent {
 
+  ip: string;
+
   constructor(private yourIPService: YourIPService) {}
 
   ngOnInit() {
-    this.yourIPService.getIP();
+    this.yourIPService.getIP().subscribe(
+      res => this.ip = res.ip,
+      err => console.log(err)
+    );
   }
 
 }

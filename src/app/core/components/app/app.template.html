@@ -18,11 +18,14 @@
 			</a>
 		</section>
 	</header>
-	<main class="yourPrefix-clockSection">
-		<timer></timer>
-		<section>
-			<div class="yourPrefix-clock text-center align-middle"></div>
-		</section>
+	<nav class="navbar navbar-default col-md-2 col-md-offset-5">
+		<ul class="nav navbar-nav">
+			<li><a routerLink="/timer">timer</a></li>
+			<li><a routerLink="/yourIP">your ip</a></li>
+		</ul>
+	</nav>
+	<main class="yourPrefix-mainSection">
+		<router-outlet></router-outlet>
 	</main>
 	<footer class="panel-footer text-center">
 		Created by <a href="https://github.com/dominik791">Dominik Broj</a>
