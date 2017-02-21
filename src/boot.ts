@@ -1,5 +1,3 @@
-// use this file to bootstrap your application
-
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app/core';
 

@@ -7,4 +7,4 @@ import { TimerComponent } from './components/timer/timer.component';
   exports: [ TimerComponent ],
   providers: [ ClockService ]
 })
-export class TimerModule { }
+export class ClockModule { }
