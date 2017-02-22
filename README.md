@@ -1,4 +1,4 @@
-# webpack-typescript-postcss-universal-starter
+# angular2-webpack-brief-starter
 
 <p>Simple, well-structured, modern boilerplate for Angular2 projects</p>
 <br/><br/>
